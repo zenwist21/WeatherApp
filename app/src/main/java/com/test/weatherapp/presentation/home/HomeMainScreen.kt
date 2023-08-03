@@ -359,7 +359,7 @@ fun MainCard(data: WeatherBaseData = WeatherBaseData()) {
 @Preview
 fun ItemWeatherAdditional(data: WeatherBaseData? = WeatherBaseData()) {
     val composition by rememberLottieComposition(
-        spec = LottieCompositionSpec.RawRes(getWeatherIcon(data?.weather?.get(0)?.main ?: "Clouds", timeZone = data?.sys?.timezone.toString()))
+        spec = LottieCompositionSpec.RawRes(getWeatherIcon(data?.weather?.get(0)?.main ?: "Clouds", timeZone = data?.sys?.timezone))
     )
     Box(
         modifier = Modifier

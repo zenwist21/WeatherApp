@@ -45,6 +45,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.stateIn
+import okhttp3.internal.UTC
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -137,16 +138,15 @@ fun convertLongToTimeStringUsingDateTimeFormatter(timeInMillis: Long): String {
     return format.format(date)
 }
 
-fun isDayTime(timeZone: String? = null): Boolean {
+fun isDayTime(timeZone: Long? = null): Boolean {
+    val calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
+    timeZone?.let {
+       calendar.timeInMillis = calendar.timeInMillis +(it * 1000)
+    }
+    val hour = calendar.get(Calendar.HOUR_OF_DAY)
     val sunriseHour = 6 // Set your local sunrise hour
     val sunsetHour = 18 // Set your local sunset hour
-    timeZone?.let {
-        val time = convertLongToTimeStringUsingDateTimeFormatter(it.toLong())
-        Log.e("TAG", "isDayTime: asdf", )
-        return time.toLong() in (sunriseHour + 1) until  sunsetHour
-    }
-    val calendar = Calendar.getInstance()
-    val hour = calendar.get(Calendar.HOUR_OF_DAY)
+    Log.e("TAG", "isDayTime: $hour", )
     return hour in (sunriseHour + 1) until sunsetHour
 }
 
@@ -197,14 +197,12 @@ fun Modifier.shimmerBackground(shape: Shape = RectangleShape): Modifier = compos
     return@composed this.then(background(brush, shape))
 }
 
-fun getWeatherIcon(param: String, timeZone: String? = null): Int {
+fun getWeatherIcon(param: String, timeZone: Long? = null): Int {
     val currentDay = isDayTime(timeZone)
-
     return when (param) {
         "Thunderstorm" -> {
             R.raw.ic_thunder_storm
         }
-
         "Clear" -> {
             if (currentDay) R.raw.ic_clear_day else R.raw.ic_clear_night
         }
