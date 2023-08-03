@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">WeatherApp</string>
+    <string name="icon_point">Icon point</string>
+    <string name="dummy_date">08 August 2023</string>
+    <string name="location_name">Jakarta</string>
+    <string name="dummy_current_weather">Thunder Storm</string>
+    <string name="dummy_temperature">23 F</string>
+    <string name="wind">Wind</string>
+    <string name="dummy_wind_speed">12km/h</string>
+    <string name="humidity">Humidity</string>
+    <string name="dummy_humidity">70%</string>
+    <string name="other_countries_weather">Other Countries Weather</string>
+    <string name="sunny_day">Sunny</string>
+    <string name="please_wait">Please Wait</string>
+    <string name="temperature">%1$s C</string>
+    <string name="wind_kmh">%1$s Km/h</string>
+    <string name="humidity_value">%1$s </string>
+    <string name="cannot_get_location">Enable location at application setting</string>
+</resources>
