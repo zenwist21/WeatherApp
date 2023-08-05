@@ -42,6 +42,7 @@
 ## Screenshots
 
 - Include some screenshots of your app here.
+![Alt text]([url_of_the_image](https://github.com/zenwist21/WeatherApp/blob/master/phone_screenshot.png))
 
 <!-- Getting Started -->
 ## Getting Started
